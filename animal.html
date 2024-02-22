@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Zoo Game</title>
+    </head>
+    <body>
+        <h1>Animal game by Kotesh Rekha</h1>
+        <form>
+            <label for="secretAnimal">The hidden animal type</label>
+            <input type="password" id="secretAnimal" value="Chicken">
+            <br>
+            <br>
+            <label for="guessAnimal">Guess the animal</label>
+            <input type="text" id="guessAnimal">
+            <br>
+            <br>
+            <button type="button" onclick="checkAnimal()">Check the guess</button>
+        </form>
+        
+        <p id="resultHolder">Correct: 0 | Wrong: 0</p>
+        <div><button type="button"><img src="Kingfisher.png" alt="Kingfisher" width="150" height="150" onclick="selectImage()" id="image"></button>
+        </div>
+        <script>
+
+            let correct = 0;
+            let wrong = 0;
+        
+            function checkAnimal() {
+                const secretAnimal = document.getElementById("secretAnimal").value;
+                const guessedAnimal = document.getElementById("guessAnimal").value;
+             
+                if (secretAnimal.toLowerCase() === guessedAnimal.toLowerCase()) {
+                    correct++;
+                    alert("Ruff ruff");
+                } else {
+                    wrong++;
+                    alert("Grrrr");
+                }
+                
+                const result = document.getElementById("resultHolder");
+                result.innerHTML = `Correct: ${correct} | Wrong: ${wrong}`;
+                if(wrong>correct)
+                {
+                    const result = document.getElementById("resultHolder");
+                result.innerHTML = "Sorry, to many wrong gusses";
+                }
+                
+            }
+            </script>
+            <script>
+                let useImage=1;
+            function selectImage()
+            {
+        switch (useImage) {
+            case 1:
+                document.getElementById("image").src="Kingfisher.png";
+                useImage=2;
+                break;
+            case 2:
+                document.getElementById("image").src = "Antiquity.webp";
+                useImage=3;
+                break;
+            case 3:
+                 document.getElementById("image").src = "Redbull.avif";   
+                 useImage=1;
+                break;
+        
+            default:
+                break;
+        }
+    }
+
+        </script>
+    </body>
+</html>
